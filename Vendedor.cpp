@@ -3,12 +3,17 @@
 
 class Vendedor : public Empregado {
 
+  private:
+    double quotaMensalVendas;
   public:
-    std::string nome;  	  
-	
 	double quotaTotalAnual() {
 	  return quotaMensalVendas * 12;
 	}
-	
+	void setQuotaMensalVendas(double _quotaMensalVendas){
+		quotaMensalVendas = _quotaMensalVendas;
+	}
+	double getQuotaMensalVendas(){
+		return quotaMensalVendas;
+	}
 };
 

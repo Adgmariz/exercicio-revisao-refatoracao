@@ -6,23 +6,35 @@
 
 class Empregado {
 	
-  public:
+  private:
+    const double limiteHorasTrabalhadas = 8;
     double salarioHora;  
-    double quotaMensalVendas;  
-
-
+    std::string nome;
+  
+  public:
     double pagamentoMes(double horasTrabalhadas) {
- 
-      double t = horasTrabalhadas;
-	  
-	  //Cálculo de hora extra (+50% se horasTrabalhadas > 8)
-      if (horasTrabalhadas > 8) {
-        double x = horasTrabalhadas - 8;
-        t += x / 2;
+      double total = horasTrabalhadas;
+	  //Cálculo de hora extra (+50% se horasTrabalhadas > limiteHorasTrabalhadas)
+    //Cada hora extra custa 1,5x o salarioHora
+      if (horasTrabalhadas > limiteHorasTrabalhadas) {
+        double horasExtras = horasTrabalhadas - limiteHorasTrabalhadas;
+        total += horasExtras / 2;
       }
-	  return t * salarioHora;
+	  return (total * salarioHora);
     }
-	
+    void setNome(std::string _nome){
+      nome = _nome;
+    }
+    std::string getNome(){
+      return nome;
+    }
+    void setSalarioHora(double _salarioHora){
+      salarioHora = _salarioHora;
+    }
+    double getSalarioHora(){
+      return salarioHora;
+    }
+
 };
 
 #endif
